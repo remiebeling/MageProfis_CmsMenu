@@ -1,0 +1,1 @@
+<?xml version="1.0"?><layout>    <cms_page_view>        <reference name="left">            <block type="cmsmenu/menu" name="cms.menu" template="mageprofis/cmsmenu/menu.phtml"></block>        </reference>    </cms_page_view></layout>
