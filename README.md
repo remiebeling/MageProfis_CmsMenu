@@ -1,2 +1,5 @@
 # MageProfis_CmsMenu
-use cms page urls to create cms menu
+This module provides the ability to create menus for CMS-Pages.
+
+Just add "Menu group" to Multiple CMS-Pages and a menu
+containing all Pages with the same "Menu group" will be displayed in the left col
