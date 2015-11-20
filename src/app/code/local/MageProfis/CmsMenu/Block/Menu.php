@@ -7,17 +7,9 @@ class MageProfis_CmsMenu_Block_Menu extends Mage_Core_Block_Template
     {
         if($this->_cms_pages == null)
         {
-            
-            
-        $search = $this->getIdentifierGroup();
-        if(Mage::registry('virtual_group'))
-        {
-           $search = Mage::registry('virtual_group');
-        }
-        
-        $this->_cms_pages = Mage::getModel('cms/page')->getCollection()
+            $this->_cms_pages = Mage::getModel('cms/page')->getCollection()
                     ->addFieldToFilter('is_active', 1)
-                    ->addFieldToFilter('identifier', array('like' => $search . '/%'))
+                    ->addFieldToFilter('menu_group', $this->getMenuGroup())
                     ->addFieldToFilter('show_in_menu', '1')
                     ->setOrder('menu_order', 'ASC');
         }
@@ -72,15 +64,9 @@ class MageProfis_CmsMenu_Block_Menu extends Mage_Core_Block_Template
         }
     }
     
-    public function getIdentifierGroup()
+    public function getMenuGroup()
     {
-        $result = array_filter((array)explode('/', trim($this->getRequest()->getPathInfo(), '/')));
-        if(count($result)  > 1)
-        {
-            return current($result);     
-        }
-        return false;
-             
+        return Mage::getSingleton('cms/page')->getMenuGroup();
     }
     
     public function getCmsPageUrl($identifier)
@@ -90,7 +76,7 @@ class MageProfis_CmsMenu_Block_Menu extends Mage_Core_Block_Template
     
     protected function _toHtml()
     {
-        if($this->getIdentifierGroup() || Mage::registry('virtual_group'))
+        if($this->getMenuGroup() != "")
         {
             if(Mage::getStoreConfigFlag('cmsmenu/general/active'))
             {

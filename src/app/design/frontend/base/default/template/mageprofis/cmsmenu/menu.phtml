@@ -1,8 +1,4 @@
-<?php if(Mage::getStoreConfigFlag('faq/cmsmenu/show_in_menu')):?>
-    <?php $categories = $this->getMenuItems(array(array('Häufige Fragen','faq', Mage::getStoreConfig('faq/cmsmenu/menu_position')))); ?>
-<?php else:?>
-    <?php $categories = $this->getMenuItems(); ?>
-<?php endif; ?>    
+<?php $categories = $this->getMenuItems(); ?>
 <?php if($categories && count($categories) > 0):?>
     <div class="box box-cms-menu">
         <div class="box-title"><?php echo Mage::getStoreConfig('cmsmenu/general/menu_title')?></div>
@@ -15,9 +11,4 @@
         </ul>
     </div>
 <?php endif; ?>
-<?php echo $this->getChildHtml('contact.box')?>
-<script type="text/javascript">
-    jQuery(document).ready(function(){
-       jQuery('#vertnav').remove(); 
-    });
-</script>
+

@@ -27,6 +27,15 @@ class MageProfis_CmsMenu_Model_Observer
             'options'   => array(1 => Mage::helper('cmsmenu')->__('show'), 0 => Mage::helper('cmsmenu')->__('do not show')),
         ));
         
+        $fieldset->addField('menu_group', 'text', array(
+            'name'      => 'menu_group',
+            'label'     => Mage::helper('cmsmenu')->__('Menu Group'),
+            'title'     => Mage::helper('cmsmenu')->__('Menu Group'),
+            'required'  => false,
+            'disabled'  => $isElementDisabled,
+            'value'     => $model->getMenuGroup(),
+        ));
+        
         $fieldset->addField('name_in_menu', 'text', array(
             'name'      => 'name_in_menu',
             'label'     => Mage::helper('cmsmenu')->__('name in CMS Menu'),

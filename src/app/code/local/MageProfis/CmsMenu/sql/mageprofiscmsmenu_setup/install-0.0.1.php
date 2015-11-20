@@ -24,4 +24,11 @@ $installer->getConnection()
         'nullable'  => true,
         'comment'   => Mage::helper('cmsmenu')->__('name in cms menu'),
     ));
+    $installer->getConnection()
+        ->addColumn($installer->getTable('cms/page'), 'menu_group', array(
+        'type'      => Varien_Db_Ddl_Table::TYPE_TEXT,
+        'length'    => 255,
+        'nullable'  => true,
+        'comment'   => Mage::helper('cmsmenu')->__('menu group'),
+    ));
 $installer->endSetup();
